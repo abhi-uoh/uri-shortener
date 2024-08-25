@@ -7,9 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Map;
+
+import static com.shortUrl.urlShortener.constant.urlConstant.METRICS_LIMIT;
 
 @RestController
-@RequestMapping("/shorten/url")
+@RequestMapping("/shorten/url/")
 public class UrlShortenerController {
 
     @Autowired
@@ -30,6 +33,12 @@ public class UrlShortenerController {
         } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "URL not found");
         }
+    }
+
+    @GetMapping("/metrics")
+    public ResponseEntity<Map<String, Integer>> getTopDomains() {
+        Map<String, Integer> topDomains = urlShortenerService.getTopDomains(METRICS_LIMIT);
+        return ResponseEntity.ok(topDomains);
     }
 
 }
