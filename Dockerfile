@@ -1,4 +1,3 @@
-# Use the official OpenJDK base image
 FROM openjdk:17-jdk-slim
 
 # Copy the Maven build output to the container
