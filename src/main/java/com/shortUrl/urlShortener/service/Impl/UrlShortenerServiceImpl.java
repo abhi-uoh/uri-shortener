@@ -105,7 +105,7 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
     //method to get top domains
     @Override
     public Map<String, Integer> getTopDomains(int limit) {
-        DEBUG_LOGGER.info("Received request to get top domains");
+        INFO_LOGGER.info("Received request to get top domains");
 
         List<Map.Entry<String, Integer>> entryList = new ArrayList<>(countDomainMap.entrySet());
         entryList.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
